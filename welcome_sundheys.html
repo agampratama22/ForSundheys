@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Welcome Sundheys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body{
+      margin:0;
+      background:#ffd6e3;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family:'Playfair Display', serif;
+      text-align:center;
+      /* Transisi untuk animasi fade in/out */
+      transition: opacity 1s ease-in-out, filter 1s ease-in-out; 
+    }
+    h1{
+      font-family:'Great Vibes', cursive;
+      font-size:3.2rem;
+      color:#6b2a4a;
+    }
+    /* Kelas untuk fade out di akhir */
+    .fadeout{
+      opacity:0;
+      filter:blur(4px);
+    }
+    /* Kelas untuk fade in di awal */
+    .fadein-start { 
+        opacity: 0;
+    }
+  </style>
+  <script>
+    // 1. Menghapus kelas 'fadein-start' setelah 10ms agar terjadi fade-in
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => { document.body.classList.remove('fadein-start'); }, 10);
+    });
+
+    // 2. Menambahkan fadeout (seperti yang sebelumnya)
+    setTimeout(()=>{ document.body.classList.add('fadeout'); },2000);
+    
+    // 3. Pindah halaman
+    setTimeout(()=>{ window.location.href='main_page.html'; },3000);
+  </script>
+</head>
+<body class="fadein-start"> 
+  <h1>Welcome Sundheys,<br> enjoy my website :)</h1>
+</body>
+</html>

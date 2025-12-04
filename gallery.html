@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang='id'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Gallery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  background:#ffd6e3;
+  font-family:'Playfair Display', serif;
+  padding:30px;
+  text-align:center;
+}
+h1 {
+  font-family:'Great Vibes', cursive;
+  font-size:3rem;
+  color:#6b2a4a;
+  margin-bottom: 40px; /* Tambah jarak di bawah judul */
+}
+.box {
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  max-width:900px; /* Lebarkan kotak agar grid 3x3 muat */
+  margin:20px auto;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  font-size:18px;
+}
+
+/* --- CSS untuk Galeri Foto Grid 3x3 --- */
+.gallery-grid {
+  display: grid;
+  /* Atur 3 kolom dengan lebar yang sama */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px; /* Jarak antar foto */
+  padding: 10px;
+}
+
+.gallery-item img {
+  width: 100%; /* Membuat gambar mengisi seluruh lebar item */
+  height: 200px; /* Atur tinggi seragam untuk semua foto */
+  object-fit: cover; /* Memastikan foto terlihat penuh tanpa terpotong aneh */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* -------------------------------------- */
+</style>
+</head>
+<body>
+<h1>Gallery</h1>
+<div class='box'>
+    <div class='gallery-grid'>
+        
+        <div class='gallery-item'>
+            <img src='Foto/1.png' alt='Foto Bersama 1'> 
+        </div>
+        <div class='gallery-item'>
+            <img src='Foto/2.jpg' alt='Foto Bersama 2'>
+        </div>
+        <div class='gallery-item'>
+            <img src='Foto/3.png' alt='Foto Bersama 3'>
+        </div>
+
+        <div class='gallery-item'>
+            <img src='foto4.jpg' alt='Foto Bereng 4 (rl ketemu)'>
+        </div>
+        <div class='gallery-item'>
+            <img src='foto5.jpg' alt='Foto Bereng 5 (rl ketemu)'>
+        </div>
+        <div class='gallery-item'>
+            <img src='foto6.jpg' alt='Foto Bereng 6 (rl ketemu)'>
+        </div>
+
+        <div class='gallery-item'>
+            <img src='Foto/7.png' alt='Foto Bersama 7'>
+        </div>
+        <div class='gallery-item'>
+            <img src='Foto/8.png' alt='Foto Bersama 8'>
+        </div>
+        <div class='gallery-item'>
+            <img src='Foto/9.png' alt='Foto Bersama 9'>
+        </div>
+        
+    </div>
+</div>
+
+<button onclick="location.href='main_page.html'" 
+style="margin-top:20px;padding:10px 20px;border:none;background:#6b2a4a;color:white;
+border-radius:8px;cursor:pointer;font-family:'Playfair Display',serif;">Kembali</button>
+
+</body>
+</html>

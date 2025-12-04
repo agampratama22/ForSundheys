@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang='id'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>Music</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin:0;
+  background:#ffd6e3;
+  font-family:'Playfair Display', serif;
+  padding:30px;
+  text-align:center;
+}
+h1 {
+  font-family:'Great Vibes', cursive;
+  font-size:3rem;
+  color:#6b2a4a;
+  margin-bottom: 40px;
+}
+.box {
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  max-width:700px; 
+  margin:auto;
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+  font-size:18px;
+}
+/* Style untuk daftar lagu */
+.music-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+.song-item:last-child {
+  border-bottom: none;
+}
+/* Style untuk tombol putar (Gambar) */
+.play-button {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  margin-right: 15px;
+  /* Anda bisa mengganti ini dengan gambar Anda sendiri */
+  /* Untuk contoh ini, kita gunakan emotikon play/pause */
+  font-size: 24px; 
+  line-height: 40px;
+  text-align: center;
+  color: #6b2a4a;
+}
+.song-info {
+  flex-grow: 1;
+}
+.song-info strong {
+  display: block;
+}
+</style>
+</head>
+<body>
+<h1>Music</h1>
+<div class='box'>
+    <p>Pilih lagu favoritmu di bawah ini:</p>
+
+    <div class="music-list">
+        
+        <div class="song-item">
+            <span class="play-button" data-audio-id="audio1" onclick="togglePlay('audio1')">▶️</span>
+            <div class="song-info">
+                <strong>KeepYouSafe</strong>
+                <span>Yahya</span>
+		<br> (ini lagu pertama yang kamu request) </br>
+            </div>
+            <audio id="audio1" src="Lagu/Yahya - keepyousafe.mp3" preload="none"></audio>
+        </div>
+
+        <div class="song-item">
+            <span class="play-button" data-audio-id="audio2" onclick="togglePlay('audio2')">▶️</span>
+            <div class="song-info">
+                <strong>Judul Lagu Kedua</strong>
+                <span>Nama Artis/Penyanyi</span>
+            </div>
+            <audio id="audio2" src="lagu_favorit_2.mp3" preload="none"></audio>
+        </div>
+        
+        <div class="song-item">
+            <span class="play-button" data-audio-id="audio3" onclick="togglePlay('audio3')">▶️</span>
+            <div class="song-info">
+                <strong>Judul Lagu Ketiga</strong>
+                <span>Nama Artis/Penyanyi</span>
+            </div>
+            <audio id="audio3" src="lagu_favorit_3.mp3" preload="none"></audio>
+        </div>
+
+    </div>
+    
+</div>
+
+<button onclick="location.href='main_page.html'" 
+style="margin-top:20px;padding:10px 20px;border:none;background:#6b2a4a;color:white;
+border-radius:8px;cursor:pointer;font-family:'Playfair Display',serif;">Kembali</button>
+
+<script>
+    // Fungsi JavaScript untuk memutar/menghentikan audio
+    let currentAudio = null;
+
+    function togglePlay(audioId) {
+        const audio = document.getElementById(audioId);
+        const button = document.querySelector(`.play-button[data-audio-id="${audioId}"]`);
+
+        if (audio.paused) {
+            // Hentikan audio yang sedang diputar (jika ada)
+            if (currentAudio && currentAudio !== audio) {
+                currentAudio.pause();
+                const currentButton = document.querySelector(`.play-button[data-audio-id="${currentAudio.id}"]`);
+                if (currentButton) {
+                    currentButton.textContent = '▶️'; // Ubah tombol audio sebelumnya menjadi play
+                }
+            }
+
+            // Putar audio yang baru
+            audio.play();
+            button.textContent = '⏸️'; // Ubah tombol menjadi pause
+            currentAudio = audio;
+
+            // Atur event listener agar tombol kembali ke 'play' saat lagu selesai
+            audio.onended = () => {
+                button.textContent = '▶️';
+                currentAudio = null;
+            };
+
+        } else {
+            // Hentikan audio yang sedang diputar
+            audio.pause();
+            button.textContent = '▶️'; // Ubah tombol menjadi play
+            currentAudio = null;
+        }
+    }
+</script>
+
+</body>
+</html>
