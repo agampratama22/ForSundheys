@@ -9,8 +9,10 @@
     :root{
       --bg:#ffd6e3;
       --text:#6b2a4a;
-      --btn-bg:#fff1f6;
-      --btn-border:#f7c6db;
+      /* --- Perubahan Warna Tombol Menjadi Maroon --- */
+      --btn-bg:#6b2a4a; 
+      --btn-border:#6b2a4a;
+      --btn-text: white; 
     }
     body{
       margin:0;
@@ -20,6 +22,11 @@
       justify-content:center;
       align-items:center;
       height:100vh;
+      transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
+    }
+    .fadeout{
+      opacity:0;
+      filter:blur(4px);
     }
     .box{
       background:white;
@@ -39,16 +46,25 @@
       border-radius:999px;
       border:2px solid var(--btn-border);
       background:var(--btn-bg);
+      color:var(--btn-text);
       cursor:pointer;
       font-family:'Playfair Display',serif;
     }
   </style>
+  <script>
+    function goToWelcome() {
+        document.body.classList.add('fadeout');
+        setTimeout(() => {
+            window.location.href='welcome_sundheys.html';
+        }, 500);
+    }
+  </script>
 </head>
 <body>
   <div class="box">
     <h1>Hi Sundheys, this is for you</h1>
     <p>Sentuhan kecil penuh cinta 💕</p>
-    <button class="btn" onclick="window.location.href='welcome_sundheys.html'">click me</button>
+    <button class="btn" onclick="goToWelcome()">click me</button>
   </div>
 </body>
 </html>

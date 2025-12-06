@@ -10,10 +10,19 @@
 <style>
 body {
   margin:0;
-  background:#ffd6e3;
-  font-family:'Playfair Display', serif;
+  /* Font diganti menjadi sans-serif */
+  font-family:'Arial', sans-serif; 
   padding:30px;
   text-align:center;
+  
+  /* Background gambar baru */
+  background-image: url('Foto/background.jpg'); 
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  /* Tambahan untuk Fade-In/Out */
+  transition: opacity 0.5s ease-in-out;
 }
 h1 {
   font-family:'Great Vibes', cursive;
@@ -30,8 +39,18 @@ h1 {
   font-size:18px;
 }
 </style>
+<script>
+    // Skrip untuk Fade-In
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.opacity = '0';
+        setTimeout(() => { document.body.style.opacity = '1'; }, 10);
+    });
+</script>
 </head>
-<body>
+<body onbeforeunload="document.body.style.opacity='0'"> 
+
+<audio id="story_music" src="Lagu/Pamungkas.mp3" autoplay loop preload="auto"></audio>
+
 <h1>Our Story</h1>
 <div class='box' align="justify">Kamu masih inget nggak first time kita ketemu? Aku tuh nggak sengaja join ke Wapapa pas kalian lagi main di map gunung, aku lupa nama gunungnya apa. Yang aku inget cuma waktu itu ada kamu, Wapa, Sasa, Ming, dan Pinkan. Shoutout to Wapa yang sudah mempertemukan kita hehe.
 <br></br>
@@ -40,6 +59,7 @@ Long story short, Wapa sering ngajak kita ngumpul di hutan setiap kelar main map
 Kita nongkrong di hutan sampai jam 3 pagi tanpa peduli besok kerja atau kuliah, HAHA. That was so fun. Walaupun cuma sementara, but I felt so special. Dan kamu tau kenapa aku ngga pernah bosen ngobrol sama kamu? Because I like the way you tell your stories, I like the way you listen to mine, and I like how you think every time we exchange thoughts. Kamu ngga pernah judge aku waktu aku cerita, dan kamu selalu jadi pendengar yang baik.
 <br></br>
 Walaupun kita belum pernah ketemu, aku merasa ini awal aku nyaman sama kamu. Karena aku kepo, aku akhirnya cari Instagram kamu tanpa persetujuanmu. I’m sorry karena udah bikin kamu nggak nyaman dengan kebodohan pertamaku itu. Kamu nutupin itu dengan baik dan bilang ngga masalah, dan aku hargai itu tapi jujur, aku lebih suka kalau kamu bilang apa yang kamu rasain sebenarnya.</div>
+
 
 <button onclick="location.href='main_page.html'" 
 style="margin-top:20px;padding:10px 20px;border:none;background:#6b2a4a;color:white;

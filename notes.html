@@ -10,10 +10,18 @@
 <style>
 body {
   margin:0;
-  background:#ffd6e3;
-  font-family:'Playfair Display', serif;
+  font-family:'Arial', sans-serif; 
   padding:30px;
   text-align:center;
+  
+  /* --- BACKGROUND GAMBAR DARI MAIN_PAGE --- */
+  background-image: url('Foto/background.jpg'); 
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  /* Tambahan untuk Fade-In/Out */
+  transition: opacity 0.5s ease-in-out;
 }
 h1 {
   font-family:'Great Vibes', cursive;
@@ -30,8 +38,15 @@ h1 {
   font-size:18px;
 }
 </style>
+<script>
+    // Skrip untuk Fade-In
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.opacity = '0';
+        setTimeout(() => { document.body.style.opacity = '1'; }, 10);
+    });
+</script>
 </head>
-<body>
+<body onbeforeunload="document.body.style.opacity='0'"> 
 <h1>Notes</h1>
 <div class='box'>Tempat menulis pesan atau catatan 💬</div>
 

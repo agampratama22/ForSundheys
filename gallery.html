@@ -10,47 +10,57 @@
 <style>
 body {
   margin:0;
-  background:#ffd6e3;
   font-family:'Playfair Display', serif;
   padding:30px;
   text-align:center;
+  
+  /* --- BACKGROUND GAMBAR DARI MAIN_PAGE --- */
+  background-image: url('Foto/background.jpg'); 
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+
+  /* Tambahan untuk Fade-In/Out */
+  transition: opacity 0.5s ease-in-out;
 }
 h1 {
   font-family:'Great Vibes', cursive;
   font-size:3rem;
   color:#6b2a4a;
-  margin-bottom: 40px; /* Tambah jarak di bawah judul */
+  margin-bottom: 40px; 
 }
 .box {
   background:white;
   padding:25px;
   border-radius:12px;
-  max-width:900px; /* Lebarkan kotak agar grid 3x3 muat */
+  max-width:900px; 
   margin:20px auto;
   box-shadow:0 0 10px rgba(0,0,0,0.1);
   font-size:18px;
 }
-
-/* --- CSS untuk Galeri Foto Grid 3x3 --- */
 .gallery-grid {
   display: grid;
-  /* Atur 3 kolom dengan lebar yang sama */
   grid-template-columns: repeat(3, 1fr); 
-  gap: 15px; /* Jarak antar foto */
+  gap: 15px; 
   padding: 10px;
 }
-
 .gallery-item img {
-  width: 100%; /* Membuat gambar mengisi seluruh lebar item */
-  height: 200px; /* Atur tinggi seragam untuk semua foto */
-  object-fit: cover; /* Memastikan foto terlihat penuh tanpa terpotong aneh */
+  width: 100%; 
+  height: 200px; 
+  object-fit: cover; 
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-/* -------------------------------------- */
 </style>
+<script>
+    // Skrip untuk Fade-In
+    document.addEventListener('DOMContentLoaded', () => {
+        document.body.style.opacity = '0';
+        setTimeout(() => { document.body.style.opacity = '1'; }, 10);
+    });
+</script>
 </head>
-<body>
+<body onbeforeunload="document.body.style.opacity='0'">
 <h1>Gallery</h1>
 <div class='box'>
     <div class='gallery-grid'>
@@ -66,13 +76,13 @@ h1 {
         </div>
 
         <div class='gallery-item'>
-            <img src='foto4.jpg' alt='Foto Bereng 4 (rl ketemu)'>
+            <img src='Foto/4.png' alt='Foto RL nanti'>
         </div>
         <div class='gallery-item'>
-            <img src='foto5.jpg' alt='Foto Bereng 5 (rl ketemu)'>
+            <img src='Foto/5.png' alt='Foto RL nanti'>
         </div>
         <div class='gallery-item'>
-            <img src='foto6.jpg' alt='Foto Bereng 6 (rl ketemu)'>
+            <img src='Foto/6.png' alt='Foto RL nanti'>
         </div>
 
         <div class='gallery-item'>
