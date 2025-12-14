@@ -40,17 +40,72 @@ h1 {
 }
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 15px; 
-  padding: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.gallery-item {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* INI KUNCI */
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 .gallery-item img {
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-position: center center;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* LIGHTBOX */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+animation: zoomIn 0.3s ease;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+
+#lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+}
+
 </style>
 <script>
     // Skrip untuk Fade-In
@@ -66,33 +121,33 @@ h1 {
     <div class='gallery-grid'>
         
         <div class='gallery-item'>
-            <img src='Foto/1.png' alt='Foto Bersama 1'> 
+            <img src='Foto/1.png' alt='Foto Bersama 1' onclick="openLightbox(this)"> 
         </div>
         <div class='gallery-item'>
-            <img src='Foto/2.jpg' alt='Foto Bersama 2'>
+            <img src='Foto/2.jpg' alt='Foto Bersama 2' onclick="openLightbox(this)">
         </div>
         <div class='gallery-item'>
-            <img src='Foto/3.png' alt='Foto Bersama 3'>
-        </div>
-
-        <div class='gallery-item'>
-            <img src='Foto/4.png' alt='Foto RL nanti'>
-        </div>
-        <div class='gallery-item'>
-            <img src='Foto/5.png' alt='Foto RL nanti'>
-        </div>
-        <div class='gallery-item'>
-            <img src='Foto/6.png' alt='Foto RL nanti'>
+            <img src='Foto/3.png' alt='Foto Bersama 3' onclick="openLightbox(this)">
         </div>
 
         <div class='gallery-item'>
-            <img src='Foto/7.png' alt='Foto Bersama 7'>
+            <img src='Foto/4.png' alt='Foto RL nanti' onclick="openLightbox(this)">
         </div>
         <div class='gallery-item'>
-            <img src='Foto/8.png' alt='Foto Bersama 8'>
+            <img src='Foto/5.png' alt='Foto RL nanti' onclick="openLightbox(this)">
         </div>
         <div class='gallery-item'>
-            <img src='Foto/9.png' alt='Foto Bersama 9'>
+            <img src='Foto/6.png' alt='Foto RL nanti' onclick="openLightbox(this)">
+        </div>
+
+        <div class='gallery-item'>
+            <img src='Foto/7.png' alt='Foto Bersama 7' onclick="openLightbox(this)">
+        </div>
+        <div class='gallery-item'>
+            <img src='Foto/8.png' alt='Foto Bersama 8' onclick="openLightbox(this)">
+        </div>
+        <div class='gallery-item'>
+            <img src='Foto/9.png' alt='Foto Bersama 9' onclick="openLightbox(this)">
         </div>
         
     </div>
@@ -101,6 +156,24 @@ h1 {
 <button onclick="location.href='main_page.html'" 
 style="margin-top:20px;padding:10px 20px;border:none;background:#6b2a4a;color:white;
 border-radius:8px;cursor:pointer;font-family:'Playfair Display',serif;">Kembali</button>
+<!-- POPUP / LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+  <span class="close">&times;</span>
+  <img id="lightbox-img">
+</div>
+
+<script>
+function openLightbox(img) {
+  document.getElementById("lightbox-img").src = img.src;
+  document.getElementById("lightbox").style.display = "flex";
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").style.display = "none";
+  document.body.style.overflow = "auto";
+}
+</script>
 
 </body>
 </html>
