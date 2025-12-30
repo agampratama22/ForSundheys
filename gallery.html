@@ -87,6 +87,15 @@ h1 {
 animation: zoomIn 0.3s ease;
 }
 
+.gallery-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
 #lightbox img {
   max-width: 90%;
   max-height: 90%;
@@ -104,6 +113,12 @@ animation: zoomIn 0.3s ease;
   font-size: 40px;
   color: white;
   cursor: pointer;
+}
+
+#lightbox video {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 12px;
 }
 
 </style>
@@ -149,6 +164,17 @@ animation: zoomIn 0.3s ease;
         <div class='gallery-item'>
             <img src='Foto/9.png' alt='Foto Bersama 9' onclick="openLightbox(this)">
         </div>
+	<div class='gallery-item'>
+            <img src='Foto/10.png' alt='Foto Bersama 9' onclick="openLightbox(this)">
+        </div>
+	<div class="gallery-item">
+    <video src="Foto/11.mp4" muted onclick="openLightbox(this)"></video>
+</div>
+
+	<div class='gallery-item'>
+            <img src='Foto/12.png' alt='Foto Bersama 9' onclick="openLightbox(this)">
+        </div>
+
         
     </div>
 </div>
@@ -159,21 +185,54 @@ border-radius:8px;cursor:pointer;font-family:'Playfair Display',serif;">Kembali<
 <!-- POPUP / LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()">
   <span class="close">&times;</span>
-  <img id="lightbox-img">
+  <img id="lightbox-img" style="display:none">
+  <video id="lightboxVideo" controls style="display:none"
+         onclick="event.stopPropagation()"></video>
 </div>
 
 <script>
-function openLightbox(img) {
-  document.getElementById("lightbox-img").src = img.src;
-  document.getElementById("lightbox").style.display = "flex";
+function openLightbox(element) {
+  const lightbox = document.getElementById("lightbox");
+  const img = document.getElementById("lightbox-img");
+  const video = document.getElementById("lightboxVideo");
+
+  img.style.display = "none";
+  video.style.display = "none";
+  video.pause();
+  video.src = "";
+
+  if (element.tagName === "IMG") {
+    img.src = element.src;
+    img.style.display = "block";
+  }
+
+  if (element.tagName === "VIDEO") {
+    video.src = element.src;
+    video.style.display = "block";
+
+    // 🔑 KUNCI AUDIO
+    video.muted = false;      // nyalakan suara
+    video.volume = 1;
+
+    // play hanya setelah src siap
+    video.onloadedmetadata = () => {
+      video.play().catch(() => {});
+    };
+  }
+
+  lightbox.style.display = "flex";
   document.body.style.overflow = "hidden";
 }
 
 function closeLightbox() {
+  const video = document.getElementById("lightboxVideo");
+  video.pause();
+  video.src = "";
   document.getElementById("lightbox").style.display = "none";
   document.body.style.overflow = "auto";
 }
 </script>
+
 
 </body>
 </html>
